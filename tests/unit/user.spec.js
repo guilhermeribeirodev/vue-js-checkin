@@ -22,4 +22,13 @@ describe('user component template', () => {
         
         expect(component.find('input').exists())
     })
+
+    it('should store username', () => {
+        const input = component.find('input')
+        input.element.value = 'Bob'
+        input.trigger('input')
+
+        expect(component.vm.userfullname).toBe('Bob')
+
+    })
 })

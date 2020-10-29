@@ -2,33 +2,33 @@ import User from '@/components/User.vue'
 import { mount } from '@vue/test-utils'
 describe('user component template', () => {
 
-    let component;
+    let wrapper;
 
     beforeEach(() => {
-        component = mount(User)
+        wrapper = mount(User)
     })
 
     it('should exists', () => {
         
-        expect(component.exists())
+        expect(wrapper.exists())
     })
 
     it('should contain header', () => {
         
-        expect(component.find('h1').text()).toBe('Welcome to the pub')
+        expect(wrapper.find('h1').text()).toBe('Welcome to the pub')
     })
 
     it('should contain input for user typing his/her name', () => {
         
-        expect(component.find('input').exists())
+        expect(wrapper.find('input').exists())
     })
 
     it('should store username', () => {
-        const input = component.find('input')
+        const input = wrapper.find('input')
         input.element.value = 'Bob'
         input.trigger('input')
 
-        expect(component.vm.userfullname).toBe('Bob')
+        expect(wrapper.vm.userfullname).toBe('Bob')
 
     })
 })

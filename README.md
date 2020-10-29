@@ -1,4 +1,4 @@
-# vue-js-checkin
+# vue-js-checkin  🍺  🍔  🚀
 
 ## The business model to explore
 #### The intent of this project is to practice TDD using Vue framework

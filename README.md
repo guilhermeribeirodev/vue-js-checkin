@@ -35,7 +35,7 @@ yarn serve
 
 ### Run your unit tests
 ```
-yarn jest
+yarn jest --watch
 ```
 
 

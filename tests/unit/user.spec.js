@@ -11,4 +11,9 @@ describe('user component template', () => {
         const component = mount(User)
         expect(component.find('h1').text()).toBe('Welcome to the pub')
     })
+
+    it('should contain input for user typing his/her name', () => {
+        const component = mount(User)
+        expect(component.find('input').exists())
+    })
 })

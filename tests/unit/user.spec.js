@@ -6,4 +6,9 @@ describe('user component template', () => {
         const component = mount(User)
         expect(component.exists())
     })
+
+    it('should contain header', () => {
+        const component = mount(User)
+        expect(component.find('h1').text()).toBe('Welcome to the pub')
+    })
 })

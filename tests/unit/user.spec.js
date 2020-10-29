@@ -1,5 +1,6 @@
 import User from '@/components/User.vue'
 import { mount } from '@vue/test-utils'
+
 describe('user component template', () => {
 
     let wrapper;
@@ -9,17 +10,17 @@ describe('user component template', () => {
     })
 
     it('should exist', () => {
-        
+
         expect(wrapper.exists())
     })
 
     it('should contain header', () => {
-        
+
         expect(wrapper.find('h1').text()).toBe('Welcome to the pub')
     })
 
     it('should contain input for user typing his/her name', () => {
-        
+
         expect(wrapper.find('input').exists()).toBe(true)
     })
 
@@ -28,9 +29,8 @@ describe('user component template', () => {
         const input = wrapper.find('input')
 
         //input.element.value = 'Bob'  => alternative way
-        input.setValue("Bob")
-        input.trigger('input')
-
+        input.setValue('Bob')
+        
         expect(wrapper.vm.userfullname).toBe('Bob')
 
     })
@@ -43,5 +43,17 @@ describe('user component template', () => {
 
     })
 
-    
+    it('should disable button when the input is empty', () => {
+        expect(wrapper.find('button').element.disabled).toBe(true) 
+    })
+
+    it('should enable button when the input is NOT empty', () => {
+        const input = wrapper.find('input')
+        input.setValue('Bob')
+        //input.trigger('input')
+        console.log(wrapper.find('button').element.disabled)
+        expect(wrapper.find('button').element.disabled).toBe(false) 
+    })
+
+
 })

@@ -1,17 +1,20 @@
 <template>
-    <h1>Welcome to the pub</h1>
-    <input v-model="userfullname" type="text" />
-    <button>Checkin</button>
+  <h1>Welcome to the pub</h1>
+  <input v-model="userfullname" type="text" />
+  <button :disabled="isDisabled">Checkin</button>
 </template>
 
 <script>
 export default {
-
-    data: function () {
+  data: function () {
     return {
-      userfullname: ''
-    }
-  }
-
-}
+      userfullname: '',
+    };
+  },
+  computed: {
+    isDisabled: function () {
+      return this.userfullname === '';
+    },
+  },
+};
 </script>

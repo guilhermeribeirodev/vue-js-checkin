@@ -30,7 +30,7 @@ describe('user component template', () => {
 
         //input.element.value = 'Bob'  => alternative way
         input.setValue('Bob')
-        
+
         expect(wrapper.vm.userfullname).toBe('Bob')
 
     })
@@ -38,21 +38,39 @@ describe('user component template', () => {
     it('should render the checkin button', () => {
         expect(wrapper.find('button').exists()).toBe(true)
         expect(wrapper.find('button').text()).toMatch('Checkin')
-        // or
+            // or
         expect(wrapper.find('button').text()).toBe('Checkin')
 
     })
 
     it('should disable button when the input is empty', () => {
-        expect(wrapper.find('button').element.disabled).toBe(true) 
+        expect(wrapper.find('button').element.disabled).toBe(true)
+        expect(wrapper.vm.isDisabled).toBe(true)
     })
 
     it('should enable button when the input is NOT empty', () => {
-        const input = wrapper.find('input')
+        const input = wrapper.find('.userfullname')
         input.setValue('Bob')
-        //input.trigger('input')
-        console.log(wrapper.find('button').element.disabled)
-        expect(wrapper.find('button').element.disabled).toBe(false) 
+
+        //console.log(wrapper.find('button').element.disabled)
+        expect(wrapper.vm.isDisabled).toBe(false)
+    })
+
+    it('should be over 18 years old', () => {
+        const input = wrapper.find('.age')
+
+        //input.element.value = 'Bob'  => alternative way
+        // input.trigger('input')
+
+        // input.element.value = 20
+        // input.trigger('input')
+        console.log(input)
+
+        input.setValue(20)
+
+        wrapper.setData({ age: 20 })
+
+        expect(wrapper.vm.age).toBeGreaterThan(18)
     })
 
 

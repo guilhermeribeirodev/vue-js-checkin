@@ -26,7 +26,7 @@ describe('user component template', () => {
 
     it('should store username', () => {
 
-        const input = wrapper.find('input')
+        const input = wrapper.find('.userfullname')
 
         //input.element.value = 'Bob'  => alternative way
         input.setValue('Bob')
@@ -43,35 +43,47 @@ describe('user component template', () => {
 
     })
 
-    it('should disable button when the input is empty', () => {
-        expect(wrapper.find('button').element.disabled).toBe(true)
-        expect(wrapper.vm.isDisabled).toBe(true)
-    })
-
-    it('should enable button when the input is NOT empty', () => {
-        const input = wrapper.find('.userfullname')
-        input.setValue('Bob')
-
-        //console.log(wrapper.find('button').element.disabled)
-        expect(wrapper.vm.isDisabled).toBe(false)
-    })
+    
 
     it('should be over 18 years old', () => {
-        const input = wrapper.find('.age')
-
-        //input.element.value = 'Bob'  => alternative way
-        // input.trigger('input')
-
-        // input.element.value = 20
-        // input.trigger('input')
-        console.log(input)
-
-        input.setValue(20)
-
-        wrapper.setData({ age: 20 })
+        const input = wrapper.find('.dob')
+        input.setValue('12/12/1990')
 
         expect(wrapper.vm.age).toBeGreaterThan(18)
     })
+
+    describe('enable and disable submit when empty fields', () => {
+
+        it('should disable button when the fullusername input is empty', () => {
+            const input = wrapper.find('.userfullname')
+            input.setValue('')
+
+            expect(wrapper.find('button').element.disabled).toBe(true)
+            expect(wrapper.vm.isDisabled).toBe(true)
+        })
+    
+        it('should enable button when the input is NOT empty', () => {
+            const input = wrapper.find('.userfullname')
+            input.setValue('Bob')
+            const dob = wrapper.find('.dob')
+            dob.setValue('10/10/1990')
+    
+            expect(wrapper.vm.isDisabled).toBe(false)
+        })
+
+        it('should disable button when the dob input is empty', () => {
+            const userfullname = wrapper.find('.userfullname')
+            userfullname.setValue('something')
+            const dob = wrapper.find('.dob')
+            dob.setValue('')
+            
+            expect(wrapper.find('button').element.disabled).toBe(true)
+            expect(wrapper.vm.isDisabled).toBe(true)
+        })
+
+    })
+
+    
 
 
 })

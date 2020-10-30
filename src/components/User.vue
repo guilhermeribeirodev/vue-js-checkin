@@ -27,8 +27,6 @@ export default {
         diff /= (60 * 60 * 24);
         var ageInYears = Math.abs(Math.round(diff/365.25));
 
-        console.log(ageInYears)
-
         return ageInYears >= 18
     }
   },

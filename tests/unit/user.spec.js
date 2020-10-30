@@ -1,7 +1,7 @@
 import User from '@/components/User.vue'
 import { mount } from '@vue/test-utils'
 
-describe('user component template', () => {
+describe('user checkin component template', () => {
 
     let wrapper;
 
@@ -19,38 +19,40 @@ describe('user component template', () => {
         expect(wrapper.find('h1').text()).toBe('Welcome to the pub')
     })
 
-    it('should contain input for user typing his/her name', () => {
+    describe('userfullname input', () => {
 
-        expect(wrapper.find('input').exists()).toBe(true)
-    })
+        it('should contain input for user typing his/her name', () => {
 
-    it('should store username', () => {
-
-        const input = wrapper.find('.userfullname')
-
-        //input.element.value = 'Bob'  => alternative way
-        input.setValue('Bob')
-
-        expect(wrapper.vm.userfullname).toBe('Bob')
-
-    })
-
-    it('should render the checkin button', () => {
-        expect(wrapper.find('button').exists()).toBe(true)
-        expect(wrapper.find('button').text()).toMatch('Checkin')
-            // or
-        expect(wrapper.find('button').text()).toBe('Checkin')
-
-    })
-
+            expect(wrapper.find('input').exists()).toBe(true)
+        })
     
+        it('should store username', () => {
+    
+            const input = wrapper.find('.userfullname')
+    
+            //input.element.value = 'Bob'  => alternative way
+            input.setValue('Bob')
+    
+            expect(wrapper.vm.userfullname).toBe('Bob')
+    
+        })
 
-    it('should be over 18 years old', () => {
-        const input = wrapper.find('.dob')
-        input.setValue('12/12/1990')
+        it('should be over 18 years old', () => {
+            const input = wrapper.find('.dob')
+            input.setValue('12/12/1990')
+    
+            expect(wrapper.vm.age).toBeGreaterThan(18)
+        })
 
-        expect(wrapper.vm.age).toBeGreaterThan(18)
+        it('should render the checkin button', () => {
+            expect(wrapper.find('button').exists()).toBe(true)
+            expect(wrapper.find('button').text()).toMatch('Checkin')
+                // or
+            expect(wrapper.find('button').text()).toBe('Checkin')
+    
+        })
     })
+
 
     describe('enable and disable submit when empty fields', () => {
 

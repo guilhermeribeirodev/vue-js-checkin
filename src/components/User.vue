@@ -19,12 +19,17 @@ export default {
     isDisabled: function () {
       return this.userfullname === '' || this.dob === '';
     },
-    age: function () {
-        console.log(this.dob)
+    ageCheck: function () {
+        
         var dobMilis = new Date(this.dob)
         var today = new Date()
+        var diff = (today.getTime() - dobMilis.getTime()) / 1000
+        diff /= (60 * 60 * 24);
+        var ageInYears = Math.abs(Math.round(diff/365.25));
 
-        return (today - dobMilis) / 36000 / 365
+        console.log(ageInYears)
+
+        return ageInYears >= 18
     }
   },
 };

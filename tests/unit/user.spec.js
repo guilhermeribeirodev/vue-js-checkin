@@ -41,7 +41,14 @@ describe('user checkin component template', () => {
             const input = wrapper.find('.dob')
             input.setValue('12/12/1990')
     
-            expect(wrapper.vm.age).toBeGreaterThan(18)
+            expect(wrapper.vm.ageCheck).toBe(true)
+        })
+
+        it('should be false if less than 18 years old', () => {
+            const input = wrapper.find('.dob')
+            input.setValue('12/12/2008')
+    
+            expect(wrapper.vm.ageCheck).toBe(false)
         })
 
         it('should render the checkin button', () => {
@@ -84,8 +91,6 @@ describe('user checkin component template', () => {
         })
 
     })
-
-    
 
 
 })

@@ -9,6 +9,7 @@ AC's
 
 - *Given* an user wants to check-in at the pub 
 - *When* USER scans the QR code on the top of the TABLE
+- *And* USER signs up with his fullname and age
 - *Then* USER is ready to order
 
 ----------------------------------------

@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/beer1.png">
-  <User />
+  <UserSignInForm />
 </template>
 
 <script>
-import User from './components/User.vue'
+import UserSignInForm from '@/components/UserSignInForm.vue'
 
 export default {
   name: 'App',
   components: {
-    User
+    UserSignInForm
   }
 }
 </script>

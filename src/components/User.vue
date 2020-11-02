@@ -6,7 +6,7 @@
   <input class="dob"  v-model="dob" type="text" />
   <label for="table-code">Table</label>
   <input class="table-code" v-model="tableCode" type="number" />
-  <button :disabled="isDisabled">Checkin</button>
+  <button @click="validate" :disabled="isDisabled">Checkin</button>
 </template>
 
 <script>
@@ -17,6 +17,14 @@ export default {
       dob: '',
       tableCode: 0
     };
+  },
+  methods: {
+      validate: function () {
+          if(this.userfullname === ''){
+            throw 'User full name should not be empty!';
+          }
+          
+      }
   },
   computed: {
     isDisabled: function () {

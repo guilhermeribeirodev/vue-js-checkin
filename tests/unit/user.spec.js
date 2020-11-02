@@ -58,6 +58,23 @@ describe('user checkin component template', () => {
             expect(wrapper.find('button').text()).toBe('Checkin')
     
         })
+
+        describe('userfullname input validation', () => {
+            it('should throw error if empty', () => {
+                const button = wrapper.find('button')
+                button.trigger('button')
+                expect(wrapper.vm.validate).toThrowError()
+            })
+
+            it('should NOT throw error if NOT empty', () => {
+                const input = wrapper.find('.userfullname')
+                input.setValue('Some value')
+                const button = wrapper.find('button')
+                button.trigger('button')
+                expect(wrapper.vm.validate).not.toThrowError()
+            })
+            
+        })
     })
 
 

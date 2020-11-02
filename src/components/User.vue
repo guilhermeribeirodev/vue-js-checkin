@@ -4,6 +4,8 @@
   <input name="userfullname" class="userfullname" v-model="userfullname" type="text" />
   <label for="ages">DOB</label>
   <input class="dob"  v-model="dob" type="text" />
+  <label for="table-code">Table</label>
+  <input class="table-code" v-model="tableCode" type="number" />
   <button :disabled="isDisabled">Checkin</button>
 </template>
 
@@ -12,7 +14,8 @@ export default {
   data: function () {
     return {
       userfullname: '',
-      dob: ''
+      dob: '',
+      tableCode: 0
     };
   },
   computed: {

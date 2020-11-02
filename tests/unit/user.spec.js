@@ -92,5 +92,14 @@ describe('user checkin component template', () => {
 
     })
 
+    describe('table code input', () => {
+        it('should store table code', () => {
+            const tablecode = wrapper.find('.table-code')
+            tablecode.setValue('21')
+
+            expect(wrapper.vm.tableCode).toBe('21')
+        })
+    })
+
 
 })

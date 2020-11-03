@@ -1,5 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/beer1.png">
+  <h1>Welcome to the pub</h1>
   <UserSignInForm />
 </template>
 

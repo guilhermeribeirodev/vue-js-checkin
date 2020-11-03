@@ -1,5 +1,5 @@
 <template>
-  <h1>Welcome to the pub</h1>
+  
   <label for="userfullname">Full name</label>
   <input name="userfullname" class="userfullname" v-model="userfullname" type="text" />
   <label for="ages">DOB</label>

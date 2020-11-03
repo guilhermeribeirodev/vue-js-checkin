@@ -9,15 +9,6 @@ describe('user checkin component template', () => {
         wrapper = mount(UserSignInForm)
     })
 
-    it('should exist', () => {
-
-        expect(wrapper.exists())
-    })
-
-    it('should contain header', () => {
-
-        expect(wrapper.find('h1').text()).toBe('Welcome to the pub')
-    })
 
     describe('userfullname input', () => {
 

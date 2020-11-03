@@ -1,7 +1,7 @@
 <template>
   
-  <label for="userfullname">Full name</label>
-  <input name="userfullname" class="userfullname" v-model="userfullname" type="text" />
+  <label for="full-name">Full name</label>
+  <input name="full-name" class="full-name" v-model="fullName" type="text" />
   <label for="ages">DOB</label>
   <input class="dob"  v-model="dob" type="text" />
   <label for="table-code">Table</label>
@@ -13,7 +13,7 @@
 export default {
   data () {
     return {
-      userfullname: '',
+      fullName: '',
       dob: '',
       tableCode: 0,
       errors: []
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
       validate () {
-          if(this.userfullname === ''){
+          if(this.fullName === ''){
             this.errors.push('User full name should not be empty!')
             throw 'User full name should not be empty!';
           }
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     isDisabled () {
-      return this.userfullname === '' || this.dob === '';
+      return this.fullName === '' || this.dob === '';
     },
     ageCheck() {
         

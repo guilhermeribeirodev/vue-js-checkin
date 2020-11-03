@@ -3,11 +3,11 @@ import { mount } from '@vue/test-utils'
 
 describe('user checkin component template', () => {
 
-    let wrapper, userfullname, dob, button, tablecode;
+    let wrapper, fullName, dob, button, tablecode;
 
     beforeEach(() => {
         wrapper = mount(UserSignInForm)
-        userfullname = wrapper.find('.userfullname')
+        fullName = wrapper.find('.full-name')
         dob = wrapper.find('.dob')
         button = wrapper.find('button')
         tablecode = wrapper.find('.table-code')
@@ -16,14 +16,14 @@ describe('user checkin component template', () => {
     describe('userfullname input', () => {
 
         it('should contain input for user typing his/her name', () => {
-            expect(userfullname.exists()).toBe(true)
+            expect(fullName.exists()).toBe(true)
         })
     
-        it('should store username', () => {
+        it('should store user full name', () => {
 
             //userfullname.element.value = 'Bob'  => alternative way
-            userfullname.setValue('Bob')
-            expect(wrapper.vm.userfullname).toBe('Bob')
+            fullName.setValue('Bob')
+            expect(wrapper.vm.fullName).toBe('Bob')
         })
 
         
@@ -42,7 +42,7 @@ describe('user checkin component template', () => {
             })
 
             it('should NOT throw error if NOT empty', () => {
-                userfullname.setValue('Some value')
+                fullName.setValue('Some value')
                 expect(wrapper.vm.validate).not.toThrowError()
             })
 
@@ -79,7 +79,7 @@ describe('user checkin component template', () => {
 
         it('should disable button when the userfullname input is empty', () => {
             
-            userfullname.setValue('')
+            fullName.setValue('')
 
             expect(button.element.disabled).toBe(true)
             expect(wrapper.vm.isDisabled).toBe(true)
@@ -87,7 +87,7 @@ describe('user checkin component template', () => {
     
         it('should enable button when the input is NOT empty', () => {
             
-            userfullname.setValue('Bob')
+            fullName.setValue('Bob')
             dob.setValue('10/10/1990')
     
             expect(wrapper.vm.isDisabled).toBe(false)
@@ -95,7 +95,7 @@ describe('user checkin component template', () => {
 
         it('should disable button when the dob input is empty', () => {
             
-            userfullname.setValue('something')
+            fullName.setValue('something')
             dob.setValue('')
             
             expect(button.element.disabled).toBe(true)

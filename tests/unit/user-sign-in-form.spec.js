@@ -37,19 +37,7 @@ describe('user checkin component template', () => {
     
         })
 
-        it('should be over 18 years old', () => {
-            const input = wrapper.find('.dob')
-            input.setValue('12/12/1990')
-    
-            expect(wrapper.vm.ageCheck).toBe(true)
-        })
-
-        it('should be false if less than 18 years old', () => {
-            const input = wrapper.find('.dob')
-            input.setValue('12/12/2008')
-    
-            expect(wrapper.vm.ageCheck).toBe(false)
-        })
+        
 
         it('should render the checkin button', () => {
             expect(wrapper.find('button').exists()).toBe(true)
@@ -60,21 +48,65 @@ describe('user checkin component template', () => {
         })
 
         describe('userfullname input validation', () => {
+
+            let button, input;
+
+            beforeEach(() => {
+                button = wrapper.find('button')
+                input = wrapper.find('.userfullname')
+            })
+
             it('should throw error if empty', () => {
-                const button = wrapper.find('button')
                 button.trigger('button')
                 expect(wrapper.vm.validate).toThrowError()
             })
 
             it('should NOT throw error if NOT empty', () => {
-                const input = wrapper.find('.userfullname')
                 input.setValue('Some value')
-                const button = wrapper.find('button')
                 button.trigger('button')
+
                 expect(wrapper.vm.validate).not.toThrowError()
             })
+
+            // it('should store error when validation error occurs', () => {
+            //     console.log(wrapper.vm.errors)
+            //     input.setValue('')
+            //     button.trigger('button')
+            //     expect(wrapper.vm.errors).toBe([])
+            // })
             
         })
+    })
+
+    describe('dob input', () => {
+
+        let input;
+        beforeEach(() => {
+            input = wrapper.find('.dob')
+        })
+
+        it('should store dob', () => {
+            input.setValue('12/12/1990')
+            expect(wrapper.vm.dob).toBe('12/12/1990')
+        })
+
+        describe('dob validations', () => {
+            it('should be over 18 years old', () => {
+            
+                input.setValue('12/12/1990')
+        
+                expect(wrapper.vm.ageCheck).toBe(true)
+            })
+    
+            it('should be false if less than 18 years old', () => {
+                
+                input.setValue('12/12/2008')
+        
+                expect(wrapper.vm.ageCheck).toBe(false)
+            })
+        })
+
+        
     })
 
 

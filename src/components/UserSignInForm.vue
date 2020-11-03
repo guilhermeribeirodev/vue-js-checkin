@@ -15,12 +15,14 @@ export default {
     return {
       userfullname: '',
       dob: '',
-      tableCode: 0
+      tableCode: 0,
+      errors: []
     };
   },
   methods: {
       validate () {
           if(this.userfullname === ''){
+            this.errors.push('User full name should not be empty!')
             throw 'User full name should not be empty!';
           }
           
@@ -35,8 +37,8 @@ export default {
         var dobMilis = new Date(this.dob)
         var today = new Date()
         var diff = (today.getTime() - dobMilis.getTime()) / 1000
-        diff /= (60 * 60 * 24);
-        var ageInYears = Math.abs(Math.round(diff/365.25));
+        diff /= (60 * 60 * 24)
+        var ageInYears = Math.abs(Math.round(diff/365.25))
 
         return ageInYears >= 18
     }

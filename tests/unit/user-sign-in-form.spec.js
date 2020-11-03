@@ -75,6 +75,14 @@ describe('user checkin component template', () => {
  
     })
 
+    describe('email input', () => {
+        const emailStr = 'my.valid@email.com'
+        it('should store valid email', () => {
+            email.setValue(emailStr)
+            expect(wrapper.vm.email).toBe(emailStr)
+        })
+    })
+
     describe('enable and disable submit when empty fields', () => {
 
         it('should disable button when the userfullname input is empty', () => {

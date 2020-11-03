@@ -35,7 +35,7 @@ describe('user checkin component template', () => {
     
         })
 
-        describe('userfullname input validation', () => {
+        describe('user full name input validation', () => {
 
             it('should throw error if empty', () => {
                 expect(wrapper.vm.validate).toThrowError()

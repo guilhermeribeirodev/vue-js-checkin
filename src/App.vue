@@ -1,16 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/beer1.png">
   <h1>Welcome to the pub</h1>
-  <UserSignInForm />
+  <base-card>
+    <UserSignInForm />
+  </base-card>
 </template>
 
 <script>
 import UserSignInForm from '@/components/UserSignInForm.vue'
+import BaseCard from '@/components/BaseCard.vue'
 
 export default {
   name: 'App',
   components: {
-    UserSignInForm
+    UserSignInForm,
+    BaseCard
   }
 }
 </script>

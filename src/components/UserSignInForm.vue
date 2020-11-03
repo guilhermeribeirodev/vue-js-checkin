@@ -28,6 +28,13 @@ export default {
             this.errors.push('User full name should not be empty!')
             throw 'User full name should not be empty!';
           }
+          const emailRegex = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+          if(!emailRegex.test(this.email)){
+            
+            this.errors.push('E-mail should be valid!')
+            throw 'User full name should not be empty!';
+          }
+
           
       }
   },

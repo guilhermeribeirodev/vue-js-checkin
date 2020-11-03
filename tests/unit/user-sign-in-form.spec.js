@@ -44,6 +44,7 @@ describe('user checkin component template', () => {
 
             it('should NOT throw error if NOT empty', () => {
                 fullName.setValue('Some value')
+                email.setValue('valid@email.com')
                 expect(wrapper.vm.validate).not.toThrowError()
             })
 
@@ -81,6 +82,24 @@ describe('user checkin component template', () => {
         it('should store valid email', () => {
             email.setValue(emailStr)
             expect(wrapper.vm.email).toBe(emailStr)
+        })
+
+        describe('email validations', () => {
+
+            it('should fail to validate a value without @', () => {
+                fullName.setValue('valid user name')
+                email.setValue('invalid.email')
+                expect(wrapper.vm.validate).toThrowError()
+                expect(wrapper.vm.errors.length).toBe(1)
+            })
+
+            it('should NOT throw error fro a valid email and username', () => {
+                fullName.setValue('valid user name')
+                email.setValue(emailStr)
+                expect(wrapper.vm.validate).not.toThrowError()
+                expect(wrapper.vm.errors.length).toBe(0)
+            })
+            
         })
     })
 

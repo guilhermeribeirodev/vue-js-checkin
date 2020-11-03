@@ -3,54 +3,46 @@ import { mount } from '@vue/test-utils'
 
 describe('user checkin component template', () => {
 
-    let wrapper;
+    let wrapper, userfullname, dob, button, tablecode;
 
     beforeEach(() => {
         wrapper = mount(UserSignInForm)
+        userfullname = wrapper.find('.userfullname')
+        dob = wrapper.find('.dob')
+        button = wrapper.find('button')
+        tablecode = wrapper.find('.table-code')
     })
 
     describe('userfullname input', () => {
 
         it('should contain input for user typing his/her name', () => {
-
-            expect(wrapper.find('input').exists()).toBe(true)
+            expect(userfullname.exists()).toBe(true)
         })
     
         it('should store username', () => {
-    
-            const input = wrapper.find('.userfullname')
-    
-            //input.element.value = 'Bob'  => alternative way
-            input.setValue('Bob')
-    
+
+            //userfullname.element.value = 'Bob'  => alternative way
+            userfullname.setValue('Bob')
             expect(wrapper.vm.userfullname).toBe('Bob')
-    
         })
 
         
         it('should render the checkin button', () => {
-            expect(wrapper.find('button').exists()).toBe(true)
-            expect(wrapper.find('button').text()).toMatch('Checkin')
+            expect(button.exists()).toBe(true)
+            expect(button.text()).toMatch('Checkin')
                 // or
-            expect(wrapper.find('button').text()).toBe('Checkin')
+            expect(button.text()).toBe('Checkin')
     
         })
 
         describe('userfullname input validation', () => {
-
-            let button, input;
-
-            beforeEach(() => {
-                button = wrapper.find('button')
-                input = wrapper.find('.userfullname')
-            })
 
             it('should throw error if empty', () => {
                 expect(wrapper.vm.validate).toThrowError()
             })
 
             it('should NOT throw error if NOT empty', () => {
-                input.setValue('Some value')
+                userfullname.setValue('Some value')
                 expect(wrapper.vm.validate).not.toThrowError()
             })
 
@@ -64,28 +56,19 @@ describe('user checkin component template', () => {
 
     describe('dob input', () => {
 
-        let input;
-        beforeEach(() => {
-            input = wrapper.find('.dob')
-        })
-
         it('should store dob', () => {
-            input.setValue('12/12/1990')
+            dob.setValue('12/12/1990')
             expect(wrapper.vm.dob).toBe('12/12/1990')
         })
 
         describe('dob validations', () => {
             it('should be over 18 years old', () => {
-            
-                input.setValue('12/12/1990')
-        
+                dob.setValue('12/12/1990')
                 expect(wrapper.vm.ageCheck).toBe(true)
             })
     
             it('should be false if less than 18 years old', () => {
-                
-                input.setValue('12/12/2008')
-        
+                dob.setValue('12/12/2008')
                 expect(wrapper.vm.ageCheck).toBe(false)
             })
         })
@@ -94,19 +77,11 @@ describe('user checkin component template', () => {
 
     describe('enable and disable submit when empty fields', () => {
 
-        let button, userfullname, dob;
-
-            beforeEach(() => {
-                button = wrapper.find('button')
-                userfullname = wrapper.find('.userfullname')
-                dob = wrapper.find('.dob')
-            })
-
         it('should disable button when the userfullname input is empty', () => {
             
             userfullname.setValue('')
 
-            expect(wrapper.find('button').element.disabled).toBe(true)
+            expect(button.element.disabled).toBe(true)
             expect(wrapper.vm.isDisabled).toBe(true)
         })
     
@@ -123,7 +98,7 @@ describe('user checkin component template', () => {
             userfullname.setValue('something')
             dob.setValue('')
             
-            expect(wrapper.find('button').element.disabled).toBe(true)
+            expect(button.element.disabled).toBe(true)
             expect(wrapper.vm.isDisabled).toBe(true)
         })
 
@@ -131,9 +106,7 @@ describe('user checkin component template', () => {
 
     describe('table code input', () => {
         it('should store table code', () => {
-            const tablecode = wrapper.find('.table-code')
             tablecode.setValue('21')
-
             expect(wrapper.vm.tableCode).toBe('21')
         })
     })

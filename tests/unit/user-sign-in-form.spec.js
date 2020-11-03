@@ -103,27 +103,33 @@ describe('user checkin component template', () => {
 
     describe('enable and disable submit when empty fields', () => {
 
-        it('should disable button when the fullusername input is empty', () => {
-            const input = wrapper.find('.userfullname')
-            input.setValue('')
+        let button, userfullname, dob;
+
+            beforeEach(() => {
+                button = wrapper.find('button')
+                userfullname = wrapper.find('.userfullname')
+                dob = wrapper.find('.dob')
+            })
+
+        it('should disable button when the userfullname input is empty', () => {
+            
+            userfullname.setValue('')
 
             expect(wrapper.find('button').element.disabled).toBe(true)
             expect(wrapper.vm.isDisabled).toBe(true)
         })
     
         it('should enable button when the input is NOT empty', () => {
-            const input = wrapper.find('.userfullname')
-            input.setValue('Bob')
-            const dob = wrapper.find('.dob')
+            
+            userfullname.setValue('Bob')
             dob.setValue('10/10/1990')
     
             expect(wrapper.vm.isDisabled).toBe(false)
         })
 
         it('should disable button when the dob input is empty', () => {
-            const userfullname = wrapper.find('.userfullname')
+            
             userfullname.setValue('something')
-            const dob = wrapper.find('.dob')
             dob.setValue('')
             
             expect(wrapper.find('button').element.disabled).toBe(true)

@@ -2,6 +2,8 @@
   
   <label for="full-name">Full name</label>
   <input name="full-name" class="full-name" v-model="fullName" type="text" />
+  <label for="email">E-mail</label>
+  <input class="email"  v-model="email" type="text" />
   <label for="ages">DOB</label>
   <input class="dob"  v-model="dob" type="text" />
   <label for="table-code">Table</label>
@@ -16,6 +18,7 @@ export default {
       fullName: '',
       dob: '',
       tableCode: 0,
+      email: '',
       errors: []
     };
   },

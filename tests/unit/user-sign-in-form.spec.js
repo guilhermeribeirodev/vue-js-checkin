@@ -3,12 +3,13 @@ import { mount } from '@vue/test-utils'
 
 describe('user checkin component template', () => {
 
-    let wrapper, fullName, dob, button, tablecode;
+    let wrapper, fullName, dob, email, button, tablecode;
 
     beforeEach(() => {
         wrapper = mount(UserSignInForm)
         fullName = wrapper.find('.full-name')
         dob = wrapper.find('.dob')
+        email = wrapper.find('.email')
         button = wrapper.find('button')
         tablecode = wrapper.find('.table-code')
     })

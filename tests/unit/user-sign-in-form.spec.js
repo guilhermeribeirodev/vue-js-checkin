@@ -9,7 +9,6 @@ describe('user checkin component template', () => {
         wrapper = mount(UserSignInForm)
     })
 
-
     describe('userfullname input', () => {
 
         it('should contain input for user typing his/her name', () => {
@@ -29,7 +28,6 @@ describe('user checkin component template', () => {
         })
 
         
-
         it('should render the checkin button', () => {
             expect(wrapper.find('button').exists()).toBe(true)
             expect(wrapper.find('button').text()).toMatch('Checkin')
@@ -48,23 +46,18 @@ describe('user checkin component template', () => {
             })
 
             it('should throw error if empty', () => {
-                button.trigger('button')
                 expect(wrapper.vm.validate).toThrowError()
             })
 
             it('should NOT throw error if NOT empty', () => {
                 input.setValue('Some value')
-                button.trigger('button')
-
                 expect(wrapper.vm.validate).not.toThrowError()
             })
 
-            // it('should store error when validation error occurs', () => {
-            //     console.log(wrapper.vm.errors)
-            //     input.setValue('')
-            //     button.trigger('button')
-            //     expect(wrapper.vm.errors).toBe([])
-            // })
+            it('should store error when validation error occurs', () => {
+                expect(wrapper.vm.validate).toThrowError()
+                expect(wrapper.vm.errors.length).toBe(1)
+            })
             
         })
     })
@@ -96,10 +89,8 @@ describe('user checkin component template', () => {
                 expect(wrapper.vm.ageCheck).toBe(false)
             })
         })
-
-        
+ 
     })
-
 
     describe('enable and disable submit when empty fields', () => {
 

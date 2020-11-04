@@ -8,15 +8,15 @@ describe('base card to apply some style', () => {
 
     beforeEach(() => {
         wrapper = mount(BaseCard, {
-          slots: {
-            default: '<div class="fake-msg"></div>'
-          }
+            slots: {
+                default: '<div class="fake-msg"></div>'
+            }
         })
         baseCard = wrapper.find(".base-card")
-      })
+    })
 
     it('should replace the slots', () => {
-        
+
         expect(baseCard.findAll(".fake-msg").length).toBe(1)
     })
 })
